@@ -1,3 +1,4 @@
+import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { DivisionsSection } from "@/components/DivisionsSection";
@@ -9,12 +10,25 @@ import { Footer } from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background font-poppins">
-      <HeroSection />
-      <AboutSection />
-      <DivisionsSection />
-      <WhyChooseSection />
-      <VisionMissionSection />
-      <ContactCTASection />
+      <Navigation />
+      <div id="hero">
+        <HeroSection />
+      </div>
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="divisions">
+        <DivisionsSection />
+      </div>
+      <div id="why-choose">
+        <WhyChooseSection />
+      </div>
+      <div id="vision-mission">
+        <VisionMissionSection />
+      </div>
+      <div id="contact">
+        <ContactCTASection />
+      </div>
       <Footer />
     </div>
   );
