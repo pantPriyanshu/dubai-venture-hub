@@ -11,17 +11,17 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-overlay"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 text-white">
-        <h1 className="font-poppins text-5xl md:text-7xl font-bold mb-6 leading-tight">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 text-white">
+        <h1 className="font-poppins text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
           Empowering Global Trade,
-          <span className="block text-accent">Enriching Everyday Life</span>
+          <span className="block text-accent mt-2">Enriching Everyday Life</span>
         </h1>
         
-        <p className="font-poppins text-xl md:text-2xl mb-8 text-accent font-medium">
+        <p className="font-poppins text-lg xs:text-xl sm:text-xl md:text-2xl mb-6 sm:mb-8 text-accent font-medium">
           Your Global Growth Partner
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Button 
             size="lg" 
             variant="secondary"
