@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/ContactForm";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -53,7 +55,7 @@ export const Navigation = () => {
               Vision & Mission
             </button>
             <Button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => setIsContactFormOpen(true)}
               variant="default"
               size="sm"
               className="font-poppins font-semibold"
@@ -104,7 +106,7 @@ export const Navigation = () => {
                 Vision & Mission
               </button>
               <Button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => setIsContactFormOpen(true)}
                 variant="default"
                 size="sm"
                 className="font-poppins font-semibold w-fit"
@@ -115,6 +117,11 @@ export const Navigation = () => {
           </div>
         )}
       </div>
+      
+      <ContactForm 
+        isOpen={isContactFormOpen} 
+        onClose={() => setIsContactFormOpen(false)} 
+      />
     </nav>
   );
 };

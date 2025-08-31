@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/ContactForm";
 import contactBackground from "@/assets/contact-cta-background.jpg";
 
 export const ContactCTASection = () => {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
   return (
     <section 
       className="py-20 relative bg-cover bg-center bg-no-repeat"
@@ -23,6 +27,7 @@ export const ContactCTASection = () => {
           <Button 
             size="lg" 
             variant="secondary"
+            onClick={() => setIsContactFormOpen(true)}
             className="font-poppins font-semibold text-lg px-10 py-4 shadow-gold hover:shadow-gold/60 transition-all duration-300"
           >
             Contact Us
@@ -30,12 +35,18 @@ export const ContactCTASection = () => {
           <Button 
             size="lg" 
             variant="outline"
+            onClick={() => setIsContactFormOpen(true)}
             className="font-poppins font-semibold text-lg px-10 py-4 border-2 border-accent text-accent hover:bg-accent hover:text-primary transition-corporate"
           >
             Request Proposal
           </Button>
         </div>
       </div>
+      
+      <ContactForm 
+        isOpen={isContactFormOpen} 
+        onClose={() => setIsContactFormOpen(false)} 
+      />
     </section>
   );
 };
