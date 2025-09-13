@@ -1,73 +1,111 @@
-# Welcome to your Lovable project
+# 📚 Library Management API
 
-## Project info
+This project provides a simple Library Management REST API built with **Spring Boot**.
 
-**URL**: https://lovable.dev/projects/48e2e17e-95fe-4eb3-91c7-862b1322bdcd
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/48e2e17e-95fe-4eb3-91c7-862b1322bdcd) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🚀 Base URL
+```
+http://<your-server>/api
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📖 BookController (`/api/books`)
 
-**Use GitHub Codespaces**
+### 1. Get all books
+- **Endpoint**: `GET /api/books`
+- **Description**: Fetch all books.
+- **Response**: List of books.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 2. Get book by ID
+- **Endpoint**: `GET /api/books/{bookId}`
+- **Path Variable**: `bookId` *(String)*
+- **Response**: Book details.
 
-## What technologies are used for this project?
+### 3. Get available books
+- **Endpoint**: `GET /api/books/available`
+- **Response**: List of available books.
 
-This project is built with:
+### 4. Get borrowed books
+- **Endpoint**: `GET /api/books/borrowed`
+- **Response**: List of borrowed books.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 5. Update book (or mark deleted)
+- **Endpoint**: `PUT /api/books/{bookId}`
+- **Path Variable**: `bookId` *(String)*
+- **Description**: Update book details or mark for deletion.
 
-## How can I deploy this project?
+### 6. Delete book
+- **Endpoint**: `DELETE /api/books/{bookId}`
+- **Path Variable**: `bookId` *(String)*
+- **Description**: Remove a book from the library.
 
-Simply open [Lovable](https://lovable.dev/projects/48e2e17e-95fe-4eb3-91c7-862b1322bdcd) and click on Share -> Publish.
+### 7. Search books
+- **Endpoint**: `GET /api/books/search`
+- **Query Params**: (e.g., `title`, `author`)
+- **Response**: Matching books.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 🏛️ LibraryController (`/api/library`)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 1. Borrow book
+- **Endpoint**: `POST /api/library/borrow`
+- **Body**:
+```json
+{
+  "memberId": 1,
+  "bookId": "ABC123"
+}
+```
+- **Response**: Confirmation of borrowing.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### 2. Return book
+- **Endpoint**: `POST /api/library/return`
+- **Body**:
+```json
+{
+  "memberId": 1,
+  "bookId": "ABC123"
+}
+```
+- **Response**: Confirmation of return.
+
+---
+
+## 👤 MemberController (`/api/members`)
+
+### 1. Get all members
+- **Endpoint**: `GET /api/members`
+- **Response**: List of members.
+
+### 2. Get member by ID
+- **Endpoint**: `GET /api/members/{memberId}`
+- **Path Variable**: `memberId` *(Long)*
+- **Response**: Member details.
+
+### 3. Get member details
+- **Endpoint**: `GET /api/members/{memberId}/details`
+- **Path Variable**: `memberId` *(Long)*
+- **Response**: Detailed info about a member.
+
+### 4. Update member (or mark deleted)
+- **Endpoint**: `PUT /api/members/{memberId}`
+- **Path Variable**: `memberId` *(Long)*
+- **Description**: Update member details or mark for deletion.
+
+### 5. Delete member
+- **Endpoint**: `DELETE /api/members/{memberId}`
+- **Path Variable**: `memberId` *(Long)*
+- **Description**: Remove a member from the system.
+
+### 6. Search members
+- **Endpoint**: `GET /api/members/search`
+- **Query Param**: `name` *(String)*
+- **Response**: Matching members.
+
+---
+
+## 🛠️ Usage Notes
+- All responses are in **JSON**.
+- Replace `<your-server>` with your host, e.g. `http://localhost:8080`.
+- Ensure you run the Spring Boot app before hitting endpoints.
